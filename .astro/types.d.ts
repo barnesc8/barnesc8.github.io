@@ -144,16 +144,23 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "pages": {
-"about.mdoc": {
-	id: "about.mdoc";
-  slug: "about";
+"events.mdoc": {
+	id: "events.mdoc";
+  slug: "events";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
-"hidden-page.mdoc": {
-	id: "hidden-page.mdoc";
-  slug: "hidden-page";
+"locations.mdoc": {
+	id: "locations.mdoc";
+  slug: "locations";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".mdoc"] };
+"terrain.mdoc": {
+	id: "terrain.mdoc";
+  slug: "terrain";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
@@ -176,58 +183,9 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "projects": {
-"an-actual-design-project.mdoc": {
-	id: "an-actual-design-project.mdoc";
-  slug: "an-actual-design-project";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
 "data-sphere-innovations.mdoc": {
 	id: "data-sphere-innovations.mdoc";
   slug: "data-sphere-innovations";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"eco-essence.mdoc": {
-	id: "eco-essence.mdoc";
-  slug: "eco-essence";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"formatting-test.mdoc": {
-	id: "formatting-test.mdoc";
-  slug: "formatting-test";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"typography-stuff.mdoc": {
-	id: "typography-stuff.mdoc";
-  slug: "typography-stuff";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"unlisted-project.mdoc": {
-	id: "unlisted-project.mdoc";
-  slug: "unlisted-project";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"unpublished-page.mdoc": {
-	id: "unpublished-page.mdoc";
-  slug: "unpublished-page";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"you-wouldn-t-download-a-hedgehog.mdoc": {
-	id: "you-wouldn-t-download-a-hedgehog.mdoc";
-  slug: "you-wouldn-t-download-a-hedgehog";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">

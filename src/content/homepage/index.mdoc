@@ -3,19 +3,29 @@ title: Home
 hideTitle: true
 customNavigation:
   discriminant: true
-  value:
-    - title: Portfolio
-      subItems: all
+  value: []
 ---
-# SKISPOT --------------------------------–
+# SKISPOT
 
-{% ImagePopout image="/TerrainParkHeader3 1.png" /%}
+{% HeroSection
+   image="/homepage1.png"
+   height="800px"
+   width="100%"
+   parallax=false
+   showPanel={discriminant: false, value: "1714664291228"} /%}
+
+---
 
 sort by:
 
-![](../../assets/images/pages/mountain.png) ![](../../assets/images/pages/more-mountain.png) ![](../../assets/images/pages/home3.png)
+---
+
+{% ImageGallery
+   options={width: "90%", gap: "1rem", imageSize: "120px", aspectRatio: "1/1"}
+   items=[{image: "/1.png", caption: "Locations"}, {image: "/2.png", caption: "Terrain Parks"}, {image: "/3.png", caption: "Events"}] /%}
 
 LOCATIONS                                  TERRAIN                                   EVENTS
 
-{% CodeEmbed
-   content="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9tYXBzL3NlYXJjaC9za2krcmVzb3J0cytuZWFyK21lL0A0MS43Mzk5NSwtNzQuMzk0MTk3MSwxMHovZGF0YT0hM20xITRiMT9lbnRyeT10dHU=" /%}
+## SkiSpot
+
+Skispot is the #1 guide to skiing in the Northeast! This is a great place to find events going on throughout the region, your nearest location to go skiing, or you guide to finding the best parks in the Northeast.
