@@ -25,23 +25,23 @@
   },
   "h2": {
     "fontFamily": "fontStack2",
-    "fontWeight": "700",
+    "fontWeight": "800",
     "fontStyle": "normal",
-    "fontSize": "1.5rem",
+    "fontSize": "2.5rem",
     "lineHeight": 1.25,
     "color": "#000000",
-    "marginTop": "0.5em",
-    "marginBottom": "0.5em"
+    "marginTop": "50px",
+    "marginBottom": "50px"
   },
   "h3": {
     "fontFamily": "fontStack2",
-    "fontWeight": "700",
+    "fontWeight": "800",
     "fontStyle": "normal",
-    "fontSize": "1.17NaNrem",
+    "fontSize": "2NaNrem",
     "lineHeight": 1.25,
     "color": "",
-    "marginTop": "1em",
-    "marginBottom": "1em"
+    "marginTop": "50px",
+    "marginBottom": "10px"
   },
   "h4": {
     "fontFamily": "fontStack2",
