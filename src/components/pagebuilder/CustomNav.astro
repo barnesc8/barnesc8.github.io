@@ -5,6 +5,7 @@ import AstroImage from "./AstroImage.astro"
 ---
 
 <style>
+    /* this styles the 'grid container' that holds all the nav items */
 .nav-container{
     display: grid;
     grid-template-columns: repeat(
@@ -13,25 +14,24 @@ import AstroImage from "./AstroImage.astro"
     );
     gap:1rem;
 }
+
+/* this styles the container for each nav item */
 .nav-item{
     position:relative;
 }
 
+/* this styles the page title (only visible on hover) */
 .nav-caption{
 position: absolute;
-left:0;bottom:0;
+left:0;
+bottom:0;
     opacity:0;
     background-color: rgba(255,255,255,0.6);
     padding:1rem;
     transition:opacity .3s;
 }
 
-.nav-caption::after{
-    position: absolute;
-    left:0;
-    right:0;bottom:0;top:0;
-}
-
+/* this shows the page title on hover */
 .nav-item:hover .nav-caption,.nav-caption:focus{
     opacity:1;
 }
@@ -42,6 +42,7 @@ left:0;bottom:0;
 <div class:list={["nav-container",Astro.props.customCSS]}>
 {items.map((item)=>{
     const {image,altText,caption,target}=item;
+
     return <a class="nav-item" href={"/"+target+"/"}>
        <AstroImage image={image} forceAspectRatio="3/2" altText={altText||""}/>
        <p class="nav-caption" >{caption}</p>
