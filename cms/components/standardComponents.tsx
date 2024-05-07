@@ -176,6 +176,109 @@ export const standardComponents = {
       );
     },
   }),
+  CustomNav: block({
+    label: "Custom Nav",
+    icon: layoutGridIcon,
+    schema: {
+      items: fields.array(
+        fields.object({
+          image: fields.image({
+            label: "upload image",
+            directory: "src/assets/images",
+            publicPath: "",
+          }),
+          altText: fields.text({
+            label: "Alt Text",
+            description:
+              "A description of the image contents. This is important for accessibility, as it allows non-sighted users to understand the content of the image",
+            defaultValue: "",
+          }),
+          caption: fields.text({
+            label: "Caption",
+            description: "An optional caption to display below the image. ",
+            defaultValue: "",
+
+          }),
+          target: fields.relationship({label:'Target page',collection:'pages'})
+        }),
+        {
+          label: "Nav Items",
+          itemLabel(props) {
+            return (
+              props.fields.caption.value ||
+              props.fields.altText.value ||
+              // @ts-ignore
+              `Item ${props?.key}`
+            );
+          },
+        },
+      ),
+      customClass: customFields.customClass,
+    },
+    ContentView(props) {
+      const [imageDataUrl, setImageDataUrl] = useState<{
+        [key: string | number]: any;
+      }>({});
+
+      const fetchImages = async () => {
+        const updatedImageDataUrl: {
+          [key: string | number]: any;
+        } = {};
+        for (const [index, item] of props.value.items.entries()) {
+          if (item.image?.data) {
+            const u8intArray = item.image.data;
+            const blob = new Blob([u8intArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onload = () => {
+              updatedImageDataUrl[index] = reader.result;
+              setImageDataUrl((prevData) => ({
+                ...prevData,
+                ...updatedImageDataUrl,
+              }));
+            };
+            reader.readAsDataURL(blob);
+          }
+        }
+      };
+
+      // Trigger image fetching when the component mounts
+      useEffect(() => {
+        fetchImages();
+      }, []);
+
+      return (
+        <div>
+          Note: the images in the preview of this component will not update
+          until you save the page!
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(auto-fit, minmax(min(100px, 100%), 1fr))`,
+      
+            }}
+          >
+            {Object.values(imageDataUrl).map((url, index) =>
+              url ? (
+                <img
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  key={index}
+                  src={url}
+                  alt={`Image ${index}`}
+                />
+              ) : (
+                <div>
+                  The image has been placed. Once you save the page, you will
+                  see it here.
+                </div>
+              ),
+            )}
+          </div>{" "}
+        </div>
+      );
+    },
+  }),
 
   underline: mark({
     label: "Underline",

@@ -68,6 +68,11 @@ export default defineMarkdocConfig({
         // textColor: { type: String },        customClass: { type: String },
       },
     },
+    CustomNav:{
+      render:component("./src/components/pagebuilder/CustomNav.astro"),
+      attributes:
+      {items:{type:Array}}
+    },
     ImageGallery: {
       render: component("./src/components/pagebuilder/ImageGallery.astro"),
       attributes: {

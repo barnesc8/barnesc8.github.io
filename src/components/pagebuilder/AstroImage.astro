@@ -1,0 +1,45 @@
+---
+const { props } = Astro;
+const imagePath = "../../assets/images" + props.image;
+import Image from "astro/components/Image.astro";
+import { settings } from "../helpers/settingsHelper";
+import { getImage } from "astro:assets";
+
+import "glightbox/dist/css/glightbox.min.css";
+
+let imageSrc = "";
+let imageSrcSet = "";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "./../../**/*.{jpeg,jpg,png,gif}"
+);
+// console.log(images);
+
+if (!images[imagePath]) {
+}
+if (images && images[imagePath]) {
+  const fancyImage = await getImage({
+    src: images[imagePath](),
+    widths: [512, 1024, 2048, 4096],
+    format: "webp",
+  });
+  // console.log(fancyImage.srcSet.values[0]);
+  imageSrc = fancyImage.src;
+  imageSrcSet = fancyImage.srcSet.attribute;
+}
+const styleAttrs: { [key: string]: string } = {};
+if (props.forceAspectRatio) {
+  styleAttrs.aspectRatio = props.forceAspectRatio;
+  styleAttrs.objectFit = "cover";
+}
+---
+
+
+
+<Image
+      style={styleAttrs}
+      src={images[imagePath]()}
+      alt={props.altText || ""}
+      format="webp"
+      width={400}
+    />

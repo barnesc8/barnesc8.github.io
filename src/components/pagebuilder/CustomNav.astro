@@ -1,0 +1,52 @@
+---
+console.log(Astro.props)
+const {items}=Astro.props;
+import AstroImage from "./AstroImage.astro"
+---
+
+<style>
+.nav-container{
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(200px, 100%), 1fr)
+    );
+    gap:1rem;
+}
+.nav-item{
+    position:relative;
+}
+
+.nav-caption{
+position: absolute;
+left:0;bottom:0;
+    opacity:0;
+    background-color: rgba(255,255,255,0.6);
+    padding:1rem;
+    transition:opacity .3s;
+}
+
+.nav-caption::after{
+    position: absolute;
+    left:0;
+    right:0;bottom:0;top:0;
+}
+
+.nav-item:hover .nav-caption,.nav-caption:focus{
+    opacity:1;
+}
+
+</style>
+
+
+<div class:list={["nav-container",Astro.props.customCSS]}>
+{items.map((item)=>{
+    const {image,altText,caption,target}=item;
+    return <a class="nav-item" href={"/"+target+"/"}>
+       <AstroImage image={image} forceAspectRatio="3/2" altText={altText||""}/>
+       <p class="nav-caption" >{caption}</p>
+    </a>
+
+})}
+
+</div>
